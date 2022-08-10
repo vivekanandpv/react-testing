@@ -8,4 +8,13 @@ describe('axios tests should', () => {
     axiosInstance.get.mockResolvedValue(resp);
     expect((await axiosInstance.get('users')).data).toHaveLength(3);
   });
+
+  test('dummy', () => {
+    const users = [{ name: 'Bob' }, { name: 'Bob' }, { name: 'Bob' }];
+    const resp = { data: users };
+    axiosInstance.get.mockResolvedValue(resp);
+    axiosInstance.get('users').then((r) => {
+      expect(r.data).toHaveLength(3);
+    });
+  });
 });
